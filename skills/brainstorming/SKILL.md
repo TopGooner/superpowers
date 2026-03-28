@@ -86,6 +86,11 @@ digraph brainstorming {
 - Present options conversationally with your recommendation and reasoning
 - Lead with your recommended option and explain why
 
+**Flow test assertions:**
+
+- If the project has a flow test agent (a `flow-test/` directory with journeys), and the feature being designed is user-facing, include in the design: what the flow test should assert about this feature. Specifically: what does success look like from the user's perspective, and how would an AI reviewer recognise it in a screenshot?
+- If the project does not yet have a flow test agent, skip this.
+
 **Presenting the design:**
 
 - Once you believe you understand what you're building, present the design

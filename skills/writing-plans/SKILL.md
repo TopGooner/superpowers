@@ -103,11 +103,20 @@ git commit -m "feat: add specific feature"
 ```
 ````
 
+## No Placeholders
+
+Every step must contain the actual content an engineer needs. These are **plan failures** — never write them:
+- "TBD", "TODO", "implement later", "fill in details"
+- "Add appropriate error handling" / "add validation" / "handle edge cases"
+- "Write tests for the above" (without actual test code)
+- "Similar to Task N" (repeat the code — the engineer may be reading tasks out of order)
+- Steps that describe what to do without showing how (code blocks required for code steps)
+- References to types, functions, or methods not defined in any task
+
 ## Remember
 - Exact file paths always
-- Complete code in plan (not "add validation")
+- Complete code in every step — if a step changes code, show the code
 - Exact commands with expected output
-- Reference relevant skills with @ syntax
 - DRY, YAGNI, TDD, frequent commits
 
 ## Plan Review Loop
@@ -123,6 +132,19 @@ After writing the complete plan:
 - Same agent that wrote the plan fixes it (preserves context)
 - If loop exceeds 3 iterations, surface to human for guidance
 - Reviewers are advisory — explain disagreements if you believe feedback is incorrect
+
+## Flow Test Coverage
+
+If the project has a flow test agent (a `flow-test/` directory with journeys), every plan for a user-facing feature MUST include a task to add or extend the corresponding journey.
+
+The journey task should:
+- Add a new journey file if the feature introduces a new user flow
+- Extend an existing journey if the feature changes an existing flow
+- Include at least one `assert-ai` step that verifies the core outcome the user cares about
+
+Place this task as the last task in the plan, after the feature implementation is complete.
+
+If the project does not yet have a flow test agent, skip this section.
 
 ## Execution Handoff
 
